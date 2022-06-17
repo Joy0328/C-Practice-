@@ -1,0 +1,44 @@
+#include<iostream>
+using  namespace std;
+void prime(int n, bool& P) {
+	for (int i = 2; i < n; i++) {
+		if (n % i == 0) {
+			P = !P;
+			break;
+		}
+	}
+}
+int main() {
+	int n;
+	while (cin >> n) {
+		bool P = true;
+		prime(n, P);
+		if (P) 
+		{
+			int temp1 = 0, temp2 = n;
+			while (n != 0) {
+				temp1 *= 10;
+				temp1 += n % 10;
+				n /= 10;
+			}
+			if (temp1 == temp2) {
+				cout << temp2 << " is prime." << endl;
+			}
+			else {
+				bool p = true;
+				prime(temp1, p);
+				if (p) {
+					cout << temp2 << " is emirp." << endl;
+				}
+				else {
+					cout << temp2 << " is prime." << endl;
+				}
+			}
+		}
+		else {
+			cout << n << " is not prime." << endl;
+		}
+
+	}
+	return 0;
+}

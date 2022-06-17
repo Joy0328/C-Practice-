@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int t, k = 1;
+	cin >> t;
+	while (t--) {
+		int n, sum = 0;
+		string mp;
+		cin >> n;
+		cin >> mp;
+		for (int i = 0; i < mp.size()-1; i++) {
+			if (mp[i] == '.') {
+				mp[i + 1] = '@';
+				mp[i] = mp[i + 2] = '-';
+				sum++;
+			}
+		}
+		if (mp[mp.size() - 1] == '.') {
+			mp[mp.size() - 1] = '@';
+			sum++;
+		}
+		cout << "Case " << k++ << ": " << sum << endl;
+	}
+	return 0;
+}

@@ -1,0 +1,30 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main() {
+    int t, n, ans;
+    cin >> t;
+    while (t>0)
+    {    
+         ans = 1;
+         cin >> n;
+         if (n==0)
+         {
+             cout << n << endl;
+         }
+         else
+         {
+             while (n>0)
+             {
+                  ans *= n % 10;
+                  n = n / 10;
+             }
+            cout << ans << endl;
+            
+         }
+         t--;
+        
+    }
+    
+    return 0;
+}

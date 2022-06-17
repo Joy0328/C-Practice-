@@ -1,0 +1,34 @@
+#include<iostream>
+#include<map>
+using namespace std;
+
+ main() {
+    string str;
+    while(getline(cin,str)){
+        map<char,int>mp;
+        int max=0;
+        for(int i=0;i<str.size();i++){
+            if((str[i]>='A'&&str[i]<='Z')||(str[i]>='a'&&str[i]<='z'))
+                mp[str[i]]++;
+
+
+        }
+        for(auto i:mp){
+            if(max<i.second){
+                max=i.second;
+            }
+
+        }
+        for(auto i:mp){
+            if(max==i.second){
+                cout<<i.first;
+            }
+
+        }
+        cout<<" "<<max<<endl;
+
+    }
+
+    return 0;
+ }
+

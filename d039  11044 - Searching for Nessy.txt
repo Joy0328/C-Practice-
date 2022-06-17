@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	int n, m, t;
+	cin >> t;
+	while (t>0) {
+		cin >> n >> m;
+		int temp1, temp2;
+		if ((n - 2) % 3 != 0)
+			temp1 = (n - 2) / 3 + 1;
+		else
+			temp1 = (n - 2) / 3;
+		if ((m - 2) % 3 != 0)
+			temp2 = (m - 2) / 3 + 1;
+		else
+			temp2 = (m - 2) / 3;
+		cout << temp1 * temp2 << endl;
+
+		t--;
+
+	}
+	return 0;
+}

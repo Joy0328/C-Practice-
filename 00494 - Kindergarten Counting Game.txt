@@ -1,0 +1,24 @@
+#include<iostream>
+#include<string>
+#include<sstream>
+using namespace std;
+int main() {
+	string str, s;
+	stringstream ss;
+	while (getline(cin, str)) {
+		ss.str("");
+		ss.clear();
+		int Cnt = 0;
+		for (int i = 0; i < str.size(); i++) {
+			if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
+				continue;
+			str[i] = ' ';
+		}
+		ss << str;
+		while (ss >> s) {
+			Cnt++;
+		}
+		cout << Cnt << endl;
+	}
+	return 0;
+}

@@ -1,0 +1,26 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+int main() {
+    char s[1000];
+    int len,t;
+    cin >> s; 
+    len = strlen(s);
+    t = 0;
+    for (int i = 0; i < len/2; i++)
+    {
+        if (s[i] == s[len - i-1]) {
+            t++;
+        }
+    }
+    if (t==len/2 )
+    {
+        cout << "yes";
+    }
+    else
+    {
+        cout << "no";
+    }
+    return 0;
+}

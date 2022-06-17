@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    while (cin >> n) {
+        long long int temp = (n + 1) / 2;
+        long long  int s = n * temp + temp - 1;
+        s = s + (s - 2) + (s - 4);
+        cout << s << endl;
+    }
+    return 0;
+}

@@ -1,0 +1,56 @@
+#include<iostream>
+#include<map>
+using namespace std;
+int dx[]={0,1,0,-1};
+int dy[]={1,0,-1,0};
+int worry[55][55];
+int main() {
+    map<char,int>mp;map<int,char>mp2;
+    mp['N']=0; mp2[0]='N';
+    mp['E']=1; mp2[1]='E';
+    mp['S']=2; mp2[2]='S';
+    mp['W']=3; mp2[3]='W';
+    int row,col,X,Y,tempX,tempY,D;
+    char iniD;
+    string str;
+    cin>>row>>col;
+    while(cin>>X>>Y>>iniD>>str){
+        bool lost=false;
+        D=mp[iniD];
+        for(int i=0;i<str.size();i++)
+        {
+            if(str[i]=='F')
+            {
+                tempX=X+dx[D];
+                tempY=Y+dy[D];
+                if(tempX<0||tempX>row||tempY<0||tempY>col){
+                    if(worry[X][Y])
+                    {
+                        continue;
+                    }
+                    worry[X][Y]=1;
+                    lost=!lost;
+                    cout<<X<<" "<<Y<<" "<<mp2[D]<<" LOST"<<endl;
+                    break;
+                }
+                else{
+                    X=tempX;
+                    Y=tempY;
+                }
+            }
+
+            else if(str[i]=='L'){
+                D=(3+D)%4;
+            }
+            else{
+                D=(D+1)%4;
+            }
+
+        }
+        if(!lost)
+            cout<<X<<" "<<Y<<" "<<mp2[D]<<endl;
+
+    }
+
+    return 0;
+}

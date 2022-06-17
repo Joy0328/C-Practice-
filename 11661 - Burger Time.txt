@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    int L;
+    while (cin >> L) {
+        if (!L)break;
+        string str;
+        cin >> str;
+        int mn = 99999999, cnt = 0;
+        char C = ' ';
+        for (int i = 0; i < str.size(); i++) {
+            if (str[i] == 'Z') {
+                mn = 0;
+                break;
+            }
+            else if (str[i] == 'R') {
+                if (C == 'D') {
+                    C = 'R';
+                    mn = min(mn, cnt);
+                    cnt = 0;
+                }
+                else if (C == 'R') {
+                    cnt = 0;
+
+                }
+                else {
+                    C = 'R';
+                }
+            }
+            else if (str[i] == 'D') {
+                if (C == 'R') {
+                    C = 'D';
+                    mn = min(mn, cnt);
+                    cnt = 0;
+                }
+                else if (C == 'D') {
+                    cnt = 0;
+
+                }
+                else {
+                    C = 'D';
+                }
+            }
+            if (C == 'R' || C == 'D') {
+                cnt++;
+            }
+        }
+        cout << mn << endl;
+    }
+    return 0;
+}

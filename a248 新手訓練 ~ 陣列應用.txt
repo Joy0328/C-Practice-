@@ -1,0 +1,27 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    int a, b;
+    int n;
+    while (cin >> a >> b >> n) {
+        string str = "";
+        str += to_string(a / b);
+        str += '.';
+        a = 10*(a - (a / b) * b);//170
+        while (n--) {
+            if (a < b) {
+                a *= 10;
+                str += '0';
+            }
+            else
+            {   
+                str += to_string(a / b);
+                a = (a - (a / b) * b )* 10;
+            }
+        }
+        cout << str << endl;
+    }
+    return 0;
+}

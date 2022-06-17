@@ -1,0 +1,31 @@
+#include <iostream>
+#include<string>
+#include<stack>
+#include<sstream>
+using namespace std;
+
+int main() {
+    string str;
+    int n;
+    cin >> n;
+    while (n--) {
+        cin >> str;
+        int count = 0;
+        stack<char>input;
+        for (int i = 0; i < str.size(); i++) {          
+            if (!input.empty() && str[i] == ')' && input.top() == '(') {
+                input.pop();
+                count++;
+            }
+            else
+            {
+               input.push(str[i]);
+            }
+        }
+        if (!input.empty())
+            count = 0;
+        cout << count << endl;
+    }
+
+    return 0;
+}

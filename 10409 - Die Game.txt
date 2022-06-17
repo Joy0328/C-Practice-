@@ -1,0 +1,41 @@
+#include<iostream>
+
+using  namespace std;
+int main() {
+	int n;
+	while (cin >> n) {
+		int Top = 1, North = 2, West = 3, temp;
+		if (n == 0)break;
+		while (n > 0) {
+			char ins[6];
+			cin >> ins;
+			switch (ins[0])
+			{
+			case 'n':
+				temp = Top;
+				Top = 7 - North;
+				North = temp;
+				break;
+			case 's':
+				temp = Top;
+				Top = North;
+				North = 7 - temp;
+				break;
+			case 'w':
+				temp = Top;
+				Top = 7 - West;
+				West = temp;
+				break;
+			case 'e':
+				temp = Top;
+				Top = West;
+				West = 7 - temp;
+				break;
+			}
+
+			n--;
+		}
+		cout << Top << endl;
+	}
+	return 0;
+}

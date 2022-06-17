@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int main() {
+    long long int n, f, a, s, l;
+    cin >> n;
+    while (n > 0) {
+        cin >> f;
+        long long int ans = 0;
+        while (f > 0) {
+            cin >> a >> s >> l;
+            ans += a * l;
+            f--;
+        }
+        cout << ans << endl;
+        n--;
+    }
+
+    return 0;
+}

@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	int n;
+	cin >> n;
+	while (n > 0) {
+		int A, F, j;
+		cin >> A >> F;
+		for (int i = 1; i <= F; i++) {
+			for ( j = 1; j <= A; j++) {
+				for (int k = 0; k < j; k++) {
+					cout << j;
+				}
+				cout << endl;
+			}
+			j -= 2;
+			for ( ; j >=1; j--) {
+				for (int k = 0; k < j; k++) {
+					cout << j;
+				}
+				cout << endl;
+			}
+			cout << endl;
+
+		}
+
+
+		n--;
+	}
+	return 0;
+}

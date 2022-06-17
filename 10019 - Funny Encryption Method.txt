@@ -1,0 +1,41 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+int binaryCount(int num) {
+	int sum = 0;
+	while (num != 0) {
+		if (num % 2 == 1) {
+			sum++;
+			num = num / 2;
+		
+		}
+		else
+			num = num / 2;
+	}
+	return sum;
+}
+int hexTodec(int num) {
+	int sum = 0, p = 1;
+	while (num != 0) {
+		sum += (num % 10) * p;
+		p *= 16;
+		num = num / 10;
+	}
+	return sum;
+}
+int main() {
+	int n;
+	cin >> n;
+	while (n > 0) {
+		int num;
+		cin >> num;
+		int b1, b2;
+		b1 = binaryCount(num);
+		b2 = binaryCount(hexTodec(num));
+		cout << b1 << " " << b2 << endl;
+		n--;
+	}
+	
+	return 0;
+}
+

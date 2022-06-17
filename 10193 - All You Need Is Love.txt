@@ -1,0 +1,37 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+int GCD(int a, int b) {
+	if (a % b == 0)
+		return b;
+	else
+		return GCD(b, a % b);
+}
+int main() {
+	int count = 1, n;
+	string S1, S2;
+	cin >> n;
+	while (n > 0) {
+		int  ans, s1 = 0, s2 = 0;
+		cin >> S1 >> S2;
+		int b = 1;
+		for (int i = S1.size(); i > 0; i--) {
+			s1 += (S1[i-1] - '0') * b;
+			b *= 2;
+		}
+		b = 1;
+		for (int i = S2.size(); i > 0; i--) {
+			s2+= (S2[i-1] - '0') * b;
+			b *= 2;
+		}
+		cout << "Pair #" << count << ": ";
+		ans = GCD(s1, s2);
+		if (ans != 1)
+			cout << "All you need is love!" << endl;
+		else
+			cout << "Love is not all you need!" << endl;
+		count++;
+		n--;
+	}
+	return 0;
+}

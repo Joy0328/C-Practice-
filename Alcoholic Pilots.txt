@@ -1,0 +1,33 @@
+#include<iostream>
+#include<string>
+using namespace std;
+long long int GCD(long long int a,long long int b){
+    if(a%b==0)
+        return b;
+    return GCD(b,a%b);
+}
+int main() {
+    long long int v1,v2,d1,d2,k=1;
+    while(cin>>v1>>d1>>v2>>d2){
+        if(v1+v2+d1+d2==0)break;
+        double a=(double)d1/v1;
+        double b=(double)d2/v2;
+        cout<<"Case #"<<k++<<": ";
+        if(a>b)
+            cout<<"No beer for the captain."<<endl;
+        else
+            cout<<"You owe me a beer!"<<endl;
+
+        cout<<"Avg. arrival time: ";
+        long long int mother=v1*d2+v2*d1,son=2*v1*v2;
+        if(mother%son==0)
+            cout<<mother/son<<endl;
+        else{
+            long long int g=GCD(mother,son);
+            cout<<mother/g<<"/"<<son/g<<endl;
+        }
+
+        }
+     return 0;
+    }
+

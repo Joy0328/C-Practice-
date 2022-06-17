@@ -1,0 +1,26 @@
+#include<iostream>
+#include<algorithm>
+#include<cstring>
+using namespace std;
+int main() {
+	char input[1000];
+	while (cin.getline(input, 1000)) {
+		int ascii[91] = { 0 }, temp, total = 0;
+		sort(input, input + strlen(input));
+		for (int i = 0; i < strlen(input); i++)
+		{
+			temp = input[i] - 32;
+			ascii[temp]++;
+			total++;
+		}
+		for (int i = 1; i < total; i++) {
+			for (int j = 91; j > -1; j--) {
+				if (ascii[j] == i)
+					cout << j + 32 << " " << i << endl;
+			}
+
+
+		}
+	}
+	return 0;
+}

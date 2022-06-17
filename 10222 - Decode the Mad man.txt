@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+int main() {
+    string k="`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./";
+    string str;
+    while(getline(cin,str)){
+        for(int i=0;i<str.size();i++){
+            if(str[i]>='A'&&str[i]<='Z')
+                str[i]+=32;
+            if(k.find(str[i])<k.size())
+            {
+                cout<<k[k.find(str[i])-2];
+
+            }
+            else
+                cout<<str[i];
+        }
+        cout<<endl;
+    }
+    return 0;
+ }
+

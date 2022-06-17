@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+int gcd(int a, int b) {
+    if (a%b==0)
+    {
+        return b;
+    }
+    else
+    {
+        return gcd(b, a % b);
+    }
+}
+
+int main()
+{
+    int n, a, b, t, s, q,j;
+    cin >> n;
+    while (n>0)
+    {
+        cin >> a>>b;
+        t = a;
+        for (int i = 2; i <= a; i++)
+        {
+            s = 0;
+            while (a % i == 0)
+            {
+                q = a;
+                s += 1;
+                a = a / i;
+                if (a%i!=0)
+                {
+                    if (s > 1)
+                    {
+                        cout << i << "^" << s;
+                    }
+                    else
+                    {
+                        cout << i;
+                    } 
+                    if (q != i)
+                    {
+                        cout << "*";
+                    }
+                }
+                
+            }
+        }//a的質因數分解
+        cout << " , ";
+
+        a = t;
+        j = 0;
+        cout << gcd(a, b) << " , ";//最大公因數
+        for (int i = 1; i < gcd(a,b); i++)
+        {
+            if (gcd(a, b) % i == 0) {
+                j++;
+            }
+        }//質數判斷
+        if (j==1)
+        {
+            cout << "Y";
+        }
+        else
+        {
+            cout << "N";
+        }
+
+        cout << endl;
+        n--;
+    }
+
+    return 0;
+}

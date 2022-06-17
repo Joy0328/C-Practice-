@@ -1,0 +1,41 @@
+#include <iostream>
+#include <queue>
+using namespace std;
+int main() {
+    int m, n;
+    while (cin >> m >> n) {
+        if (m + n == 0)break;
+        char mp[105][105];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                cin >> mp[i][j];
+            }
+        }
+        int dc[] = { 1,-1,1,-1,0,0,1,-1 };
+        int dr[] = { 1,1,-1,-1,1,-1,0,0 };
+        int sum = 0;  
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (mp[i][j] == '@') {
+                    queue<pair<int, int>>q;
+                    q.push({ i,j });
+                    while (!q.empty()) {
+                        pair<int, int> now = q.front();
+                        q.pop();
+                        for (int k = 0; k < 8; k++) {
+                            if (now.first + dc[k] >= 0 && now.first + dc[k] < m && now.second + dr[k] >= 0 && now.second + dr[k] < n) {
+                                if (mp[now.first + dc[k]][now.second + dr[k]] == '@') {
+                                    mp[now.first + dc[k]][now.second + dr[k]] = '*';
+                                    q.push({ now.first + dc[k] ,now.second + dr[k] });
+                                }
+                            }                        
+                        }
+                    }
+                    sum++;
+                }
+            }
+        }
+        cout << sum << endl;
+    }
+    return 0;
+}

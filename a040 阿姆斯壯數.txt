@@ -1,0 +1,28 @@
+#include<iostream>
+#include<string>
+#include<math.h>
+
+using namespace std;
+
+int main() {
+	int n, m;
+	while (cin >> n >> m) {
+		bool c = true;
+		for (int i = n; i <= m; i++) {
+			int sum = 0;
+			string str = to_string(i);
+			for (int j = 0; j < str.size(); j++) {
+				sum += pow(str[j] - '0', str.size());
+			}
+			if (sum == i) {
+				cout << i << " ";
+				c = false;
+			}
+		}
+		if (c)
+			cout << "none";
+		cout << endl;
+
+	}
+	return 0;
+}

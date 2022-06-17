@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int i, j, t, ans,change,s,p;
+	while (cin >> i >> j) 		
+	{
+		ans = 0;
+		cout << i << " " << j << " ";
+		if (i>j)
+		{
+			change = i;
+			i = j;
+			j = change;
+		}
+		t = i;
+		
+		while (t<=j)
+		{
+			s = 1;
+			p = t;
+			while (p!= 1)
+			{
+				if (p % 2 == 0)
+				{
+					p = p / 2;			
+				}
+				else
+				{
+					p = p * 3 + 1;					
+				}
+				s = s + 1;
+			}
+			if (ans < s)
+			{
+				ans = s;
+			}
+			t++;
+		}
+		cout << ans << endl;
+	}
+	
+
+
+	return 0;
+}
+
+

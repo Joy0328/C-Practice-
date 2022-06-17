@@ -1,0 +1,43 @@
+#include<iostream>
+#include<map>
+using namespace std;
+ main() {
+    int T;
+    while(cin>>T){
+        cin.ignore();
+        string str;
+        map<char,int>mp;
+        for(int i=0;i<T;i++){
+            getline(cin,str);
+            for(int j=0;j<str.size();j++){
+                if(str[j]>='A'&&str[j]<='Z'){
+                    mp[str[j]]++;
+                }
+                else if(str[j]>='a'&&str[j]<='z'){
+                    mp[str[j]-32]++;
+                }
+            }
+
+
+        }
+        int max=0;
+        for(auto i:mp){
+            if(max<i.second)
+                max=i.second;
+
+        }
+        for(int i=max;i>0;i--){
+            for(auto j:mp){
+                if(j.second==i){
+                    cout<<j.first<<" "<<j.second<<endl;
+                }
+
+            }
+        }
+
+
+    }
+
+    return 0;
+ }
+

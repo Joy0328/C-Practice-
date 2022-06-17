@@ -1,0 +1,33 @@
+#include<iostream>
+#include<string>
+#include<map>
+using namespace std;
+ main() {
+    int T;
+    cin>>T;
+    string str;
+    cin.ignore();//enter
+    getline(cin,str);//blank
+    while(T--){
+        cin>>str;
+        int len=str.size();
+        map<string,int>mp;
+        int temp;
+        for(int i=1;i<=len;i++){
+            if(len%i==0){
+                mp.clear();
+                for(int j=0;j<len;j+=i){
+                    mp[str.substr(j,i)]++;
+                }
+                if(mp.size()==1){
+                    temp=i;
+                    break;
+                }
+            }
+        }
+        cout<<temp<<endl<<endl;
+
+    }
+    return 0;
+ }
+

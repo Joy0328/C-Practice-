@@ -1,0 +1,42 @@
+#include<iostream>
+#include<map>
+#include<iomanip>
+using namespace std;
+map<char, char>mp;
+    mp['B'] = '1'; mp['P'] = '1'; mp['F'] = '1'; mp['V'] = '1';
+    mp['C'] = '2'; mp['S'] = '2'; mp['K'] = '2'; mp['G'] = '2'; mp['J'] = '2'; mp['Q'] = '2'; mp['X'] = '2'; mp['Z'] = '2';
+    mp['D'] = '3'; mp['T'] = '3';
+    mp['L'] = '4';
+    mp['M'] = '5'; mp['N'] = '5';
+    mp['R'] = '6';
+int main() {
+    string str;
+    char ans[5];
+    cout << "NAME                     SOUNDEX CODE" << endl;
+    while (cin >> str) {
+        ans[0] = str[0];
+        int j = 1;
+        char temp;
+        for (int i = 1; i < str.size(); i++)
+        {
+             temp = ans[j-1];
+            if (mp[str[i]] - '0' > 0 && ans[j] != temp&&mp[str[i]]!=mp[str[i-1]])
+            {
+
+                ans[j] = mp[str[i]];
+                j++;
+                if (j == 4)break;
+            }
+        }
+
+        while (j < 4) {
+            ans[j] = '0';
+            j++;
+
+        }
+           cout<<"         " <<str ;
+           cout<< setw(25)<<ans<<endl;
+
+    }
+    return 0;
+}

@@ -1,0 +1,43 @@
+#include<iostream>
+#include<stack>
+using namespace std;
+int main(){
+   int n;
+   while(cin>>n){
+        if(n==0)break;
+        while(1){
+            int train[1005];
+            stack<int>temp;
+            stack<int>ans;
+            cin>>train[1];
+            if(train[1]==0)break;
+            for(int i=2;i<=n;i++){
+                cin>>train[i];
+            }
+            int j=1;
+            for(int i=1;i<=n;i++){
+                if(i==train[j]){
+                    ans.push(i);
+                    j++;
+                    while(!temp.empty()&&train[j]==temp.top()){
+                        ans.push(temp.top());
+                        temp.pop();
+                        j++;
+                    }
+                }
+                else
+                {
+                    temp.push(i);
+                }
+
+            }
+            if(temp.empty())
+                cout<<"Yes";
+            else
+                cout<<"No";
+            cout<<endl;
+        }
+
+   }
+    return 0;
+}

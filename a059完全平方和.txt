@@ -1,0 +1,33 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+int main()
+{
+	int a, b, n[100], q, sum;
+	while (cin >> q)//輸入幾筆資料
+	{
+		for (int i = 0; i < q; i++)
+		{
+			cin >> a >> b;//輸入範圍
+			sum = 0;
+			for (int j = a; j <= b; j++)
+			{
+				if (pow(floor(sqrt(j)), 2) == pow(sqrt(j), 2))
+				{
+					sum = sum + j;
+				}
+			}
+			n[i] = sum;
+		}
+		for (int i = 1; i <= q; i++)
+		{
+			cout << "Case " << i << ": " << n[i - 1] << endl;
+		}
+
+	}
+
+
+
+	return 0;
+}

@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+char map[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+int main() {
+	string str1, str2;
+	while (cin >> str1 >> str2) {
+		int temp = 0;
+		for (int i = 0; i < 26; i++) {
+			if (map[i] == str2[0]) {
+				temp += i;
+			}
+			if (map[i] == str1[0]) {
+				temp -= i;
+			}
+		}
+		if(temp>=0)
+			cout << temp << endl;
+		else
+			cout << temp+26 << endl;
+
+	}
+	return 0;
+}

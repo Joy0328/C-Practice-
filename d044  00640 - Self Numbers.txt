@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+const int MAX = 1000000;
+bool num[MAX + 5];
+void g(int n) {
+    if (n <= MAX) {
+        int sum = n;
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        if (sum <= MAX)
+        {   
+            if (!num[sum]) {
+                num[sum] = true;
+                g(sum);
+            }
+        }
+    }
+}
+int main() {
+   
+    for (int i = 1; i <= MAX; i++) {
+        if (!num[i])
+            g(i);
+    }
+    for (int i = 1; i <= MAX; i++) {
+        if (!num[i])
+            cout << i << endl;
+    }
+    return 0;
+}

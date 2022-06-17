@@ -1,0 +1,33 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+int main() {
+	int a, b;
+	while (cin >> a >> b) {
+		if (a == 0 && b == 0) break;
+		int carry = 0, s = 0;
+		while (a > 0 || b > 0) {
+			if ((a % 10) + (b % 10) + carry > 9) {
+				carry = 1;
+				s++;
+			}
+			else {
+				carry = 0;
+			}
+			a /= 10;
+			b /= 10;
+
+		}
+		if (s == 0)
+			cout << "No carry operation." << endl;
+		else if (s == 1)
+			cout << "1 carry operation." << endl;
+		else
+			cout << s << " carry operations." << endl;
+
+	}
+	
+	return 0;
+}
+

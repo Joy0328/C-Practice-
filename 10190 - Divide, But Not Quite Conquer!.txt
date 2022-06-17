@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+int main() {
+	unsigned int n, m;
+	while (cin >> n >> m) {
+		int i = 1;
+		bool cheak = true;
+		unsigned int q[2000] = { 0 };
+		q[0] = n;
+		if (m == 0 || m == 1)
+		{
+			cheak = !cheak;
+		}
+		else {
+			while (n != 1) {
+				q[i] = n / m;
+				if (n == m)break;
+				if (q[i] % m != 0) {
+					cheak = !cheak;
+					break;
+				}
+				n = n / m;
+				i++;
+			}
+		}
+		if (cheak)
+		{
+			for (i = 0; q[i] != 0; i++) {
+				cout << q[i] << " ";
+			}
+		}
+		else {
+			cout << "Boring!";
+		}
+		cout << endl;
+	}
+	
+	return 0;
+}

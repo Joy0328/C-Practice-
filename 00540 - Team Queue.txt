@@ -1,0 +1,43 @@
+#include <iostream>
+#include<queue>
+using namespace std;
+int id[10000005];
+int main(){
+    int t,k=1;
+    while(cin>>t){
+        if(t==0)break;
+        queue<int>team[1005],q;
+        int temp,n;
+        for(int i=1;i<=t;i++){
+            cin>>n;
+            for(int j=0;j<n;j++){
+                cin>>temp;
+                id[temp]=i;
+            }
+        }
+        string str;
+        cout<<"Scenario #"<<k++<<endl;
+        while(cin>>str){
+            if(str=="STOP")break;
+            if(str=="ENQUEUE"){
+                cin>>temp;
+                if(team[id[temp]].empty()){
+                    q.push(id[temp]);
+                }
+                team[id[temp]].push(temp);
+                }
+            else{
+                temp=q.front();
+                cout<<team[temp].front()<<endl;
+                team[temp].pop();
+                if(team[temp].empty()){
+                    q.pop();
+                }
+            }
+
+        }
+
+
+    }
+    return 0;
+}

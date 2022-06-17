@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    string str[105];
+    int n = 0, max = 0;
+    while (getline(cin, str[n])) {  
+        if (max < str[n].size())
+            max = str[n].size();//find the longest 
+        n++;//how many sentences
+    }
+    
+    for (int i = 0; i < max; i++) {
+        
+        for (int j = n-1; j >=0; j--)
+        {
+            if (str[j].size() - 1 < i)
+                cout << ' ';
+            else
+                cout << str[j][i]; 
+        }
+        cout << endl;
+    }
+
+    return 0;
+}

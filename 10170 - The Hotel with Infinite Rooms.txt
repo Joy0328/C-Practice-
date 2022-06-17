@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	int S;
+	long long int D;
+	
+	while (cin >> S >> D) {
+		while (D > 0) {
+			D = D - S;
+			if (D <= 0)
+				break;
+			S++;
+
+		}
+		cout << S << endl;
+
+	}
+	return 0;
+}

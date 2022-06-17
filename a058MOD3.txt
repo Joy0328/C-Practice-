@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int num[50000], a, tri, tri1, tri2;
+	while (cin>>a)
+	{	
+		tri = 0;
+		tri1 = 0;
+		tri2 = 0;
+		for (int i = 0; i < a; i++) 
+		{
+			cin >> num[i];
+		}
+		for (int i = 0; i < a; i++)
+		{
+			if (num[i]%3==0)
+			{
+				tri++;
+			}
+			else if (num[i]%3==1)
+			{
+				tri1++;
+			}
+			else
+			{
+				tri2++;
+			}
+		}
+		cout << tri << " " << tri1 << " " << tri2 << endl;
+	}
+
+	return 0;
+}

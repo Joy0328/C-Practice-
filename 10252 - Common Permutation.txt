@@ -1,0 +1,32 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main() {
+    string a,b;
+    while(cin>>a>>b){
+            int aCnt[26]={0},bCnt[26]={0};
+            for(int i=0;i<a.size();i++){
+                aCnt[a[i]-'a']++;
+            }
+            for(int i=0;i<b.size();i++){
+                bCnt[b[i]-'a']++;
+            }
+            for(int i=0;i<26;i++){
+                if(aCnt[i]!=0){
+                    aCnt[i]=min(aCnt[i],bCnt[i]);
+                    while(aCnt[i]>0){
+                        cout<<(char)(i+'a');
+                        aCnt[i]--;
+
+                    }
+                }
+            }
+            cout<<endl;
+
+    }
+
+
+
+    return 0;
+ }
+

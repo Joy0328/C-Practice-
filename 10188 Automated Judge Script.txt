@@ -1,0 +1,54 @@
+#include<iostream>
+#include<cstring>
+#include<sstream>
+using namespace std;
+ main() {
+    int n,m;
+    for(int k=1;;k++){
+        string inp,ans="",team="";
+        cin>>n;
+        if(n==0)break;
+        cin.ignore();
+        int y=0;
+        for(int i=0;i<n;i++){
+            getline(cin,inp);
+            ans+=inp;
+            y+=inp.size();
+        }
+        cin>>m;
+        cin.ignore();
+        for(int i=0;i<m;i++){
+            getline(cin,inp);
+            team+=inp;
+        }
+        cout<<"Run #"<<k<<": ";
+        if(ans==team&&n==m){
+            cout<<"Accepted ";
+
+        }
+        else{
+            stringstream s1,s2;
+            string st1="",st2="",temp;
+            s1<<ans;
+            s2<<team;
+            while(s1>>temp){
+                st1+=temp;
+            }
+            while(s2>>temp){
+                st2+=temp;
+            }
+            if(st1!=st2){
+                cout<<"Wrong Answer ";
+            }
+            else{
+                cout<<"Presentation Error ";
+            }
+
+        }
+        cout<<y<<endl;
+
+    }
+   return 0;
+ }
+
+

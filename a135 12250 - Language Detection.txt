@@ -1,0 +1,23 @@
+#include <iostream>
+#include<map>
+using namespace std;
+int main() {
+    int k = 1;
+    string str;
+    map<string, string>mp;
+    mp["HELLO"] = "ENGLISH";
+    mp["HOLA"] = "SPANISH";
+    mp["HALLO"] = "GERMAN";
+    mp["BONJOUR"] = "FRENCH";
+    mp["CIAO"] = "ITALIAN";
+    mp["ZDRAVSTVUJTE"] = "RUSSIAN";
+
+    while (cin >> str) {
+        if (str[0] == '#')break;
+        if (mp.count(str))
+            cout << "Case " << k++ << ": " << mp[str] << endl;
+        else
+            cout << "Case " << k++ << ": UNKNOWN" << endl;
+    }
+    return 0;
+}

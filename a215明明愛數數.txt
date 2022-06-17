@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	int n, m, sum, s;
+	while (cin>>n>>m)
+	{	
+		sum = n;
+		s = 1;
+		while (sum<=m)
+		{
+			s++;
+			n++;
+			sum += n;
+		}
+		
+		cout << s << endl;
+
+	}
+	
+
+    return 0;
+}

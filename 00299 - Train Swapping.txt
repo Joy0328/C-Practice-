@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int n;
+	cin >> n;
+	while (n > 0) {
+		int L, count = 0;
+		int train[55];
+		cin >> L;
+		for (int i = 0; i < L; i++) {
+			cin >> train[i];
+		}
+		for (int i = 0; i < L; i++) {
+			for (int i = 0; i < L-1; i++) {
+				if (train[i] > train[i + 1]) {
+					int temp = train[i];
+					train[i] = train[i + 1];
+					train[i + 1] = temp;
+					count++;
+				}
+			}
+		}
+		cout << "Optimal train swapping takes " << count << " swaps." << endl;
+
+		n--;
+	}
+	
+	return 0;
+}
+
