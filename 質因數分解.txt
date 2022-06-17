@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int n,t,s,c;
+
+    while (cin >> n)
+    {
+        cout << n << "=";
+        s = 0;
+        t = 2;
+        while (n>1)
+        {
+            while (n%t==0)
+            {
+                
+                c = n;
+                n = n / t;
+                s = s + 1;
+                if (n%t!=0)
+                {   
+                    if (c==t)
+                    {
+                        cout << t << "^" << s;
+                    }
+                    else
+                    {
+                        cout << t << "^" << s<<"*";
+                        
+                    }
+                   
+                }
+            }
+            
+            s = 0;
+            t ++ ;
+        }
+        cout << endl;
+    }
+
+
+    return 0;
+}

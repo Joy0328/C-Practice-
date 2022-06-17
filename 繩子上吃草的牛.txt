@@ -1,0 +1,19 @@
+#include<iostream>
+#include<math.h>
+#include<iomanip>
+#define PI 2.0*acos(0.0)
+using namespace std;
+
+int main()
+{   
+    double D, L;
+    while (cin >> D >> L) {
+        cout << fixed << setprecision(3) << (L / 2) * sqrt(L * L / 4 - D * D / 4) * PI << endl;
+        
+
+    }
+    
+
+    return 0;
+
+}

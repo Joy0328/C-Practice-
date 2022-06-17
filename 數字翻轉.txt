@@ -1,0 +1,19 @@
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	int num[120],i,n;
+	cin >> n;
+	for ( i = 0; i < n; i++)
+	{
+		cin >> num [i] ;
+	}
+	while (i>0)
+	{
+		cout << num[i-1] << endl;
+		i--;
+	}
+	return 0;
+}
+

@@ -1,0 +1,33 @@
+
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n;
+	int s[105];
+	int tmp;
+	cin >> n;//共幾個數字
+	for (int i = 0; i < n; i++)
+	{
+		cin >> s[i]; //輸入數字
+	}
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i+1; j < n; j++) {
+			if (s[i]>s[j])
+			{
+				tmp = s[i];
+				s[i] = s[j];
+				s[j] = tmp;
+			}
+		}
+	}//排序
+
+	for (int i = 0; i < n; i++)
+	{
+		cout << s[i] << " ";
+	}
+	return 0;
+}
+

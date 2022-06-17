@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    char c;
+
+    while (cin >> c)
+    {
+        if ('a' <= c and c <= 'z')
+        {
+            c=(int)c - 32;
+            cout << c << endl;
+        }
+        else if ('A' <= c and c <= 'Z')
+        {
+            c = (int)c + 32;
+            cout << c << endl;
+        }
+    }
+
+    return 0;
+}

@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+
+    int a1,an,d,i,n;
+    cin >> a1>>an>>d;
+    n = ((an - a1) / d) + 1;
+    i = 0;
+    while (i < n)
+    {
+        
+        cout << a1 << endl;
+        a1 = a1 + d;
+        i++;
+    }
+    
+    return 0;
+}

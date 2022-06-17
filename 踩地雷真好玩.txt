@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int n;
+    while(cin>>n){
+        char mp[105][105];
+        int ans[105][105]={0};
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                cin>>mp[i][j];
+            }
+        }
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                if(mp[i][j]=='*'){
+                    for(int c=i-1;c<=i+1;c++){
+                        for(int r=j-1;r<=j+1;r++){
+                            ans[c][r]++;
+                        }
+                    }
+                }
+            }
+        }
+         for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                if(mp[i][j]!='*'&&ans[i][j]!=0)
+                    cout<<ans[i][j];
+                else
+                    cout<<mp[i][j];
+            }
+            cout<<endl;
+        }
+    }
+    return 0;
+}
+
