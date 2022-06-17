@@ -1,0 +1,44 @@
+#include <iostream>
+#include <queue>
+using namespace std;
+int main() {
+    int s, n, m, k = 1;
+    while (cin >> s >> n >> m) {
+        int p = 4;
+        int mp[105][105];
+        int ans[105][105] = { 0 };
+        queue<pair<int, int>>q;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                cin >> mp[i][j];
+                if (i == 0 && mp[i][j] == 1) {
+                    q.push({ i,j });
+                    ans[i][j] = 1;
+                }
+            }
+        }
+        int dc[] = { 0,0,1,-1 };
+        int dr[] = { 1,-1,0,0 };
+        if (s == 2)p = 3;
+        while (!q.empty()) {
+            pair<int, int>now = q.front();
+            q.pop();
+            for (int i = 0; i < p; i++) {
+                if (now.first + dc[i] >= 0 && now.first + dc[i] < n && now.second + dr[i] >= 0 && now.second + dr[i] < m) {
+                    if (mp[now.first + dc[i]][now.second + dr[i]] == 1 && ans[now.first + dc[i]][now.second + dr[i]] == 0) {
+                        ans[now.first + dc[i]][now.second + dr[i]] = ans[now.first][now.second] + 1;
+                        q.push({ now.first + dc[i] ,now.second + dr[i] });
+                    }
+                }
+            }          
+        }
+        cout << "Case " << k++ << ":" << endl;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                cout << ans[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+    return 0;
+}

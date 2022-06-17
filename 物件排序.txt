@@ -1,0 +1,31 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+int main() {
+	int c, r;
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	while (cin >> c >> r) {
+		vector<vector<int>>v;
+		vector<int>num;
+		int a;
+		for (int i = 0; i < c; i++) {
+			for (int j = 0; j < r; j++) {
+				cin >> a;
+				num.push_back(a);
+			}
+			v.push_back(num);
+			num.clear();
+		}
+		sort(v.begin(), v.end());
+		for (int i = 0; i < v.size(); i++) {
+			for (int j = 0; j < v[i].size(); j++) {
+				cout << v[i][j] << " ";
+			}
+			cout << "\n";
+		}
+	}
+	return 0;
+}

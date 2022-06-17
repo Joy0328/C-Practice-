@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int m[13], test[13] = { 0 }, n, count = 1;
+	while (cin >> n) {
+		if (n < 0)break;
+		m[0] = n;
+		int sum = 0;
+		for (int i = 1; i < 13; i++)
+			cin >> m[i];
+		for (int i = 1; i < 13; i++)
+			cin >> test[i];
+
+		cout << "Case " << count << ":" << endl;
+		int j = 0;
+		for (int i = 1; i < 13; i++) {
+			for (; j < i; j++) {
+				sum += m[j];
+			}
+			if (test[i] <= sum) {
+				cout << "No problem! :D" << endl;
+				sum -= test[i];
+			}
+			else
+			{
+				cout << "No problem. :(" << endl;
+			}
+		}
+		count++;
+	}
+
+
+	return 0;
+}

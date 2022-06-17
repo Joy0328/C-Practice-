@@ -1,0 +1,38 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+struct stuff {
+	double weight, value, avg;
+}num[105];
+bool cmp(stuff a, stuff b) {
+	return a.avg > b.avg;
+}
+int main() {
+	int n;
+	int w;
+	while (cin >> n) {
+		double ans = 0;
+		for (int i = 0; i < n; i++) {
+			cin >> num[i].weight >> num[i].value;
+			num[i].avg = num[i].value / num[i].weight;
+		}
+		cin >> w;
+		sort(num, num + n, cmp);
+		for (int i = 0; i < n; i++) {
+			if (num[i].weight > w) {
+				ans += num[i].avg * w;
+				break;
+			}
+			else
+			{
+				ans += num[i].value;
+				w -= num[i].weight;
+			}
+			if (!w)break;
+		}
+		cout << ans << endl;
+		
+	}
+
+	return 0;
+}

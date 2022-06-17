@@ -1,0 +1,27 @@
+#include <iostream>
+#include <iomanip>
+#include <map>
+#include<string>
+using namespace std;
+int main()
+{
+    int n;
+    cin >> n;
+    string str;
+    getline(cin, str);
+    getline(cin, str);
+    while (n--) {
+        
+        map<string, int>mp;
+        int total = 0;
+        while (getline(cin, str)&&str!="")
+        {                       
+            mp[str]++;
+            total++;
+        }
+        for (auto i : mp) {
+            cout << i.first << " " << fixed << setprecision(4) << (double)i.second/total*100 << endl;
+        }
+    }
+    return 0;
+}

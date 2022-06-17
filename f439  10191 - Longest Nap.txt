@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+using namespace std;
+
+int main() {
+    int T, a, b, DAY = 1;
+    string str;
+    char c;
+    while (cin >> T)
+    {
+        int max = 0, flag;
+        vector<int>hh;
+        vector<int>mm;
+        hh.push_back(10);
+        mm.push_back(0);
+        for (int i = 0; i < T; i++)
+        {
+            cin >> a >> c >> b;
+            hh.push_back(a);
+            mm.push_back(b);
+            cin >> a >> c >> b;
+            hh.push_back(a);
+            mm.push_back(b);
+            getline(cin, str);
+        }
+        hh.push_back(18);
+        mm.push_back(0);
+        int sum = 0;
+        for (int i = 0; i < T * 2 + 2; i++)
+        {
+            sum = hh[i + 1] * 60 + mm[i + 1] - hh[i] * 60 - mm[i];
+            if (max < sum) {
+                max = sum;
+                flag = i;
+            }
+            i++;
+        }
+        cout << "Day #" << DAY++ << ": the longest nap starts at " << hh[flag] << ":";
+        if (mm[flag] < 10)
+            cout << "0";
+
+            cout << mm[flag] << " and will last for ";
+
+        int hour = max / 60, min = max % 60;
+
+        if (hour != 0)
+            cout << hour << " hours and " << min << " minutes." << endl;
+        else
+            cout << max << " minutes." << endl;
+    }
+        
+    return 0;
+}

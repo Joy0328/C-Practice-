@@ -1,0 +1,36 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main() {
+    int j,r,temp;
+    while(cin>>j>>r){
+        if(r==0&&j==0)break;
+        vector<int>num;
+        vector<int>ans;
+        for(int i=0;i<j*r;i++){
+            cin>>temp;
+            num.push_back(temp);
+        }
+        for(int i=1;i<=j;i++){
+            int sum=0;
+            for(int t=i;t<=j*r;t+=j){
+                sum+=num[t-1];
+
+            }
+            ans.push_back(sum);
+        }
+        int max=0,flag=0;
+        for(int i=0;i<j;i++){
+            if(max<=ans[i])
+            {
+                max=ans[i];
+                flag=i;
+            }
+
+        }
+        cout<<flag+1<<endl;
+
+    }
+    return 0;
+}

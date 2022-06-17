@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int T;
+    cin >> T;
+    while (T--) {
+        int row, col, q, c, r;
+        char map[105][105];
+        cin >> col >> row >> q;
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++)
+            {
+                cin >> map[i][j];
+            }
+        }
+        cout << col << " " << row << " " << q << endl;
+        for (int i = 0; i < q; i++) {
+            cin >> c >> r;
+            int count = 1, d = 1;
+            bool cheak = true;
+            while (1) {
+                if (row < 3 || col < 3)break;
+                for (int k = c - d; k <= c + d; k++)
+                {
+                    for (int v = r - d; v <= r + d; v++)
+                    {
+                        if (map[c][r] != map[k][v])
+                        {
+                            cheak = false;
+                            break;
+                        }
+                    }
+                    if (!cheak)
+                        break;
+                }
+                if (cheak)
+                {
+                    count += 2;
+                    d++;
+                    if (c - d<0 || c + d>col || r - d<0 || r + d>row) {
+                        break;
+                    }
+                }
+                else
+                    break;
+            }
+            cout << count << endl;
+        }
+    }
+    return 0;
+}

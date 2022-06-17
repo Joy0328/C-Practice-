@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+using namespace std;
+
+int main() {
+    int k;
+    int Rx, Ry, inx, iny;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    while (cin >> k) {
+        if (k == 0)break;     
+        cin >> Rx >> Ry;
+        while (k--) {
+            cin >> inx >> iny;
+            if (inx == Rx || iny == Ry) {
+                cout << "divisa";
+            }
+            else if (inx > Rx) {
+                if (iny > Ry) {
+                    cout << "NE";
+                }
+                else
+                {
+                    cout << "SE";
+                }
+            }
+            else
+            {
+                if (iny > Ry) {
+                    cout << "NO";
+                }
+                else
+                {
+                    cout << "SO";
+                }
+            }
+            cout << "\n";
+        }
+    }      
+    return 0;
+}

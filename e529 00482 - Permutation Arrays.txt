@@ -1,0 +1,47 @@
+#include <iostream>
+#include<string>
+#include<vector>
+#include<sstream>
+using namespace std;
+int T;//測資數
+stringstream ss;
+string x;//據數組
+string s;
+int p;//索引數組
+int main() {
+    cin >> T;
+    cin.ignore();
+    while (T--) {
+        getline(cin, s);//索引數組
+        getline(cin, s);
+        vector <int> P;//索引數組
+        ss.str("");
+        ss.clear();      
+        ss << s;
+        while (ss >> p) {
+            P.push_back(p);
+        }
+       
+        getline(cin, s);//據數組
+        ss.str("");
+        ss.clear();
+        ss << s;
+        vector<string>X;
+        while (ss >> x) {
+            X.push_back(x);
+        }
+        string* ans = new string[(int)P.size() + 1];
+        for (int i = 0; i < P.size(); i++) {
+            ans[P[i]] = X[i];
+
+        }
+        for (int i = 1; i <= P.size(); i++) {
+            cout << ans[i] << endl;
+        }
+        delete[] ans;
+        ans = nullptr;
+    }
+
+ 
+    return 0;
+}

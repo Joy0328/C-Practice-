@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int doom[13] = { 0,10,21,7,4,9,6,11,8,5,10,7,12 };
+    string date[] = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+    int T;
+    cin >> T;
+    while (T--) {
+        int M, D;
+        cin >> M >> D;
+        int temp = (D - doom[M]) % 7;
+        if (temp >= 0)
+            cout << date[temp] << endl;
+        else
+            cout << date[temp + 7] << endl;
+    }
+    return 0;
+}

@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    int a, b;
+    while (cin >> a >> b) {
+        int Acount = 0, Bcount = 0, temp, ans1 = 0, ans2 = 0;
+        if (a + b == 0)break;
+        vector<int>A;
+        vector<int>B;
+        for (int i = 0; i < a; i++) {
+            cin >> temp;           
+            A.push_back(temp);
+            if (i != 0 && temp == A[A.size() - 2])
+                A.pop_back();
+        }
+        for (int i = 0; i < b; i++) {
+            cin >> temp;          
+            B.push_back(temp);
+            if (i != 0 && temp == B[B.size() - 2])
+                B.pop_back();
+            
+        } 
+        
+        for (int i = 0; i < A.size(); i++) {
+            for (int j = 0; j < B.size(); j++) {
+                if (A[i] != B[j]) {
+                    Acount++;
+                }
+            }
+            if (Acount==B.size())
+            {
+                ans1++;
+            }
+            Acount = 0;
+        }
+        for (int i = 0; i < B.size(); i++) {
+            for (int j = 0; j < A.size(); j++) {
+                if (B[i] != A[j]) {
+                    Bcount++;
+                }
+            }
+            if (Bcount == A.size())
+            {
+                ans2++;
+            }
+            Bcount = 0;
+        }
+        int mn = min(ans1, ans2);
+        cout << mn << endl;
+    }
+
+    return 0;
+}

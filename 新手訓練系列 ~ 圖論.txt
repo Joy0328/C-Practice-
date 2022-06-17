@@ -1,0 +1,45 @@
+#include<iostream>
+#include<vector>
+#include<memory.h>
+using namespace std;
+int A, B, n, m;
+bool mark[805] = { 0 };
+vector<int>vec[805];
+bool c = false;
+void g(int A) {
+    if (A == B) {
+        c = true;
+        return;
+    }
+    else
+    {
+        for (int i = 0; i < vec[A].size(); i++) {
+            if (mark[vec[A][i]] == 0) {
+                mark[vec[A][i]] = 1;
+                g(vec[A][i]);
+            }
+            if (c)return;
+        }
+    }
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    while (cin >> n >> m) {
+        c = false;
+        memset(mark, 0, sizeof(mark));
+        memset(vec, 0, sizeof(vec));
+        for (int i = 0; i < m; i++) {
+            cin >> A >> B;
+            if (A == B)continue;
+            vec[A].push_back(B);
+        }
+        cin >> A >> B;
+        mark[A] = 1;
+        g(A);
+        if (c)cout << "Yes!!!" << endl;
+        else cout << "No!!!" << endl;
+    }
+    return 0;
+}

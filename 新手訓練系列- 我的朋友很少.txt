@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+int p[10005];
+int f(int n) {
+    if (p[n] == n)return n;
+    else
+    {
+        p[n] = f(p[n]);
+        return p[n];
+    }
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    int n, m, q;
+    while (cin>>n>>m>>q)
+    {
+        int a, b;
+        for (int i = 1; i <= n; i++) {
+            p[i] = i;
+        }
+        for (int i = 1; i <= m; i++) {
+            
+            cin >> a >> b;
+            p[f(a)] = f(b);
+        }
+        while (q--) {
+            cin >> a >> b;
+            if (f(a)==f(b))cout << ":)" << endl;
+            else cout << ":(" << endl;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        int n;
+        cin >> n;
+        int sum, temp = 0;
+        bool cheak = false;
+        for (int i = 1; i < n; i++) {
+            sum = i;           
+            while (i > 0) {
+                temp += i % 10;
+                i /= 10;
+            }
+            i = sum;
+            if (sum+temp==n)
+            {   
+                cheak = !cheak;
+                break;
+            }
+            temp = 0;
+        }
+        if (cheak)
+            cout << sum << endl;
+        else
+            cout << "0" << endl;
+    }
+    return 0;
+}

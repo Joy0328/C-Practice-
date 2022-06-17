@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    while (cin >> n) {
+        int sum = 1, temp;
+        if (n <= 2500) {
+            temp = n;
+            while (n > 25) {
+                n = n - 25;
+                sum++;
+            }
+            cout << "1 " << sum << " " << temp - (sum-1) * 25 << endl;
+        }
+        else if (n > 2500 && n < 7501) {
+            n -= 2500;
+            temp = n;
+            while (n > 50) {
+                n = n - 50;
+                sum++;
+            }
+            cout << "2 " << sum << " " << temp - (sum - 1) * 50 << endl;
+        }
+        else
+        {
+            n -= 7500;
+            temp = n;
+            while (n > 25) {
+                n = n - 25;
+                sum++;
+            }
+            cout << "3 " << sum << " " << temp - (sum - 1) * 25 << endl;
+        }
+
+    }
+
+    return 0;
+}

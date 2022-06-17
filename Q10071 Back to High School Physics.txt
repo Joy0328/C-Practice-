@@ -1,0 +1,12 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+
+    int ans,v,t;
+    while (cin >> v>>t) {
+        ans = 2 * t * v;
+        cout << ans << endl;
+    }
+    return 0;
+}

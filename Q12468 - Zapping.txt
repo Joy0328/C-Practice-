@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+
+    int now,want;
+    while (cin >> now>>want) {
+        if (now==-1&&want==-1)
+        {
+            break;
+        }
+        if ((now==0&&want==99)or (now == 99 && want == 0))
+        {
+            cout << "1" << endl;
+            continue;
+        }
+        if (want<now)
+        {
+            cout << 0-want + now << endl;
+            continue;
+        }
+        cout << want- now << endl;
+
+    }
+    return 0;
+}

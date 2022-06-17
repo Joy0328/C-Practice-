@@ -1,0 +1,93 @@
+#include<iostream>
+#include<string>
+#include<sstream>
+using namespace std;
+int main() {
+    int T,k=1;
+    cin >> T;
+    while (T--) {
+        int n;
+        int arr[15][15];
+        cin >> n;
+        string num;
+        for (int i = 1; i <= n; i++) {
+            cin >> num;
+            for (int j = 1; j <= n; j++) {
+                arr[i][j] = num[j - 1] - '0';
+            }
+        }
+
+        int q;
+        cin >> q;//query
+        cin.ignore();
+        while (q--) {
+            string str;
+            getline(cin, str);
+            if (str[0] == 't') {
+                for (int i = 1; i <= n; i++) {
+                    for (int j = i; j <= n; j++) {
+                        int temp = arr[i][j];
+                        arr[i][j] = arr[j][i];
+                        arr[j][i] = temp;
+                    }
+                }
+
+            }
+            else if (str[0] == 'i') {
+                for (int i = 1; i <= n; i++) {
+                    for (int j = 1; j <= n; j++) {
+                        arr[i][j]++;
+                         if(arr[i][j]==10)
+                            arr[i][j]=0;
+                    }
+                }
+            }
+            else if (str[0] == 'd') {
+                for (int i = 1; i <= n; i++) {
+                    for (int j = 1; j <= n; j++) {
+                        arr[i][j]--;
+                        if(arr[i][j]==-1)
+                            arr[i][j]=9;
+                    }
+                }
+            }
+            else {
+                    stringstream ss;
+                    ss.str("");
+                    ss.clear();
+                    ss<<str;
+                    int a,b;
+                    ss>>str;
+                    ss>>a;
+                    ss>>b;
+
+                    if(str[0]=='r'){
+                        for(int i=1;i<=n;i++){
+                            int temp=arr[a][i];
+                            arr[a][i]=arr[b][i];
+                            arr[b][i]=temp;
+                        }
+                    }
+                    else{
+                        for(int i=1;i<=n;i++){
+                            int temp=arr[i][a];
+                            arr[i][a]=arr[i][b];
+                            arr[i][b]=temp;
+                        }
+
+                    }
+
+            }
+        }
+        cout<<"Case #"<<k++<<endl;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                cout << arr[i][j];
+            }
+            cout << endl;
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}

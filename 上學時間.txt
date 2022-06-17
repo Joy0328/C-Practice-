@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+
+    int hh,mm;
+
+
+    while (cin >> hh >> mm) 
+    {
+
+        if ((hh == 7 && mm >= 30)or (hh < 17 && hh>=8))
+        {
+            cout << "At School" << endl;
+        }
+        
+        else
+        {
+            cout << "NoOff School" << endl;
+        }
+    }
+    return 0;
+}

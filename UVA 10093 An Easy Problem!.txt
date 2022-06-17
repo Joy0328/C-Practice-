@@ -1,0 +1,35 @@
+#include <iostream>
+#include<string>
+using namespace std;
+int main() {
+	string str;
+	while (getline(cin,str)) {
+		int sum = 0;
+		int max = 1, d;
+		int j;
+		for (int i = 0; str[i] != '\0'; i++) {
+			if (str[i] >= '0' && str[i] <= '9')
+				d = str[i] - '0';
+			else if (str[i] >= 'A' && str[i] <= 'Z')
+				d = str[i] - 'A' + 10;
+			else if (str[i] >= 'a' && str[i] <= 'z')
+				d = str[i] - 'a' + 36;
+			if (max < d)
+				max = d;
+			sum += d;
+		}
+		for (j = 1 + max; j < 63; j++) {
+			if (sum % (j - 1) == 0)break;
+		}
+		if (j<63)
+		{
+			cout << j << endl;
+		}
+		else {
+			cout << "such number is impossible!" << endl;
+		}
+		
+	}
+
+	return 0;
+}

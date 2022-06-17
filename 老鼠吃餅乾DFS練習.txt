@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+int col, row, mx, my;
+char mp[105][105];
+int dx[] = { 0,0,1,-1 };
+int dy[] = { 1,-1,0,0 };
+bool c;
+bool mark[105][105] = { 0 };
+void dfs(int x,int y) {
+    if (mp[x][y] == 'O') {
+        c = false;
+        return;
+    }
+    else
+    {
+        for (int i = 0; i < 4; i++) {
+            int tx = x + dx[i];
+            int ty = y + dy[i];
+            if (tx >= 0 && tx < col && ty >= 0 && ty < row && mp[tx][ty] != 'x' && mark[tx][ty] == 0) {
+                mark[tx][ty] = 1;
+                dfs(tx, ty);
+                mark[tx][ty] = 0;
+            }
+            if (!c) {
+                return;
+            }
+        }
+    }
+}
+int main()
+{
+    while (cin >> row >> col) {
+        c = true;
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++) {
+                cin >> mp[i][j];
+                if (mp[i][j] == 'M') {
+                    mx = i;
+                    my = j;
+                }
+            }
+        }
+        dfs(mx, my);
+        if (!c)cout << "Yes!" << endl;
+        else cout << "Oh, no!" << endl;
+    }
+    return 0;
+}

@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    while (cin >> n) {
+        int c = 0;
+        while (n >= 12) {
+            n -= 12;
+            c++;
+        }
+        cout << 50 * c + 5 * n << endl;
+    }
+
+    return 0;
+}

@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+
+    int gender,age;
+    
+    
+    while (cin >>gender>>age ) 
+        if (gender == 1) {
+            if (age >= 18)
+            {
+                cout << "You are marriageable" << endl;
+            }
+            else
+            {
+                cout << "You are NOT marriageable." << endl;
+            }
+        }
+        if (gender == 2) 
+            if (age >= 16)
+            {
+                cout << "You are marriageable" << endl;
+            }
+            else
+            {
+                cout << "You are NOT marriageable." << endl;
+            }
+        
+    return 0;
+}

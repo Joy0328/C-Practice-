@@ -1,0 +1,25 @@
+#include <iostream>
+#include <iomanip>
+#include <math.h>
+#include<string>
+#define PI acos(0.0)*2.0
+using namespace std;
+int main()
+{
+    string str;
+    double ans1, ans2, r, a, R;;
+    while (cin >> r >> a >> str) {
+        R = 6440 + r;
+        if (str[0] == 'm') {
+            a /= 60;
+        }
+        if (a > 180) {
+            a = 360 - a;
+        }
+        ans1 = R * a * PI / 180;
+        ans2 = 2 * sin(a * PI / 180 / 2) * R;
+        cout << fixed << setprecision(6) << ans1 << " " << ans2 << endl;
+    }
+
+    return 0;
+}

@@ -1,0 +1,24 @@
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	int num[120],m,s,i,t;
+	cin >> i;//幾位學生
+	cin >> t;//幾筆資料
+	m = 0;
+	while (i>m)//輸入成績
+	{
+		
+		cin >> num[m];	
+		m++;
+	}
+	
+	while (t > 0) {
+		cin >> s;//欲查詢座號
+		cout << num[s - 1]<< endl;
+		t--;
+	}
+	return 0;
+}
+

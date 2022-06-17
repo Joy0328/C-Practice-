@@ -1,0 +1,54 @@
+#include <iostream>
+#include <math.h>
+#include <vector>
+#include <map>
+using namespace std;
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        int n, count = 0, sum = 0;
+        bool cheak = true;
+        int temp2;
+        vector<int>INPUT;
+        vector<int>TEMP;
+        cin >> n;
+        for (int i = 0; i < n; i++) {
+            cin >> temp2;
+            INPUT.push_back(temp2);
+            sum += temp2;
+        }
+        map<vector<int>, int>mp;
+        mp[INPUT]++;
+        if (sum != 0) {
+            while (1) {
+                int sum2 = 0;
+                for (int i = 0; i < n - 1; i++) {
+                    TEMP.push_back(abs(INPUT[i] - INPUT[i + 1]));
+                }
+                TEMP.push_back(abs(INPUT[n - 1] - INPUT[0]));
+                count++;
+                INPUT.clear();
+                for (int i = 0; i < n; i++) {
+                    INPUT.push_back(TEMP[i]);
+                    sum2 += INPUT[i];
+                }
+                TEMP.clear();
+                if (mp[INPUT] || count > 1000) {
+                    cheak = !cheak;
+                    break;
+                }
+                if (sum2 == 0)
+                    break;
+                mp[INPUT]++;
+
+            }
+        }
+        if (cheak)
+            cout << "ZERO" << endl;
+        else
+            cout << "LOOP" << endl;
+
+    }
+    return 0;
+}

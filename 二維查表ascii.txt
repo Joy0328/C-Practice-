@@ -1,0 +1,28 @@
+#include<iostream>
+
+using namespace std;
+int main() {
+	cout << "   0 1 2 3 4 5 6 7 8 9 " << endl;
+	cout << " 3       ";
+	for (int i = 33; i <= 126; i++) {
+		if (i%10!=0)
+		{	
+			char c = i;
+			cout << c << " ";
+		}
+		else if (i%10==0)
+		{
+			cout << endl;
+			if (i / 10 >= 10)
+				cout << i / 10;
+			else
+				cout << " " << i / 10;
+			char c = i;
+			cout <<" " << c << " ";
+		}
+
+	}
+
+
+	return 0;
+}

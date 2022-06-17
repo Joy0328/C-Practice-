@@ -1,0 +1,50 @@
+#include<iostream>
+#include<cstring>
+#include<sstream>
+#include<map>
+using namespace std;
+int m[][10]={{0,1,1,1,0,0,1,1,1,1},{0,1,1,1,0,0,1,1,1,0},{0,1,1,1,0,0,1,1,0,0},{0,1,1,1,0,0,1,0,0,0},
+    {0,1,1,1,0,0,0,0,0,0},{0,1,1,0,0,0,0,0,0,0},{0,1,0,0,0,0,0,0,0,0},{0,0,1,0,0,0,0,0,0,0},{1,1,1,1,0,0,1,1,1,0},{1,1,1,1,0,0,1,1,0,0},{1,1,1,1,0,0,1,0,0,0},
+    {1,1,1,1,0,0,0,0,0,0},{1,1,1,0,0,0,0,0,0,0},{1,1,0,0,0,0,0,0,0,0}};
+
+ main() {
+    map<char,int>mp;
+    mp['c']=0;mp['d']=1;mp['e']=2;mp['f']=3;mp['g']=4;mp['a']=5;mp['b']=6;mp['C']=7;mp['D']=8;mp['E']=9;mp['F']=10;mp['G']=11;mp['A']=12;mp['B']=13;
+    int t;
+    cin>>t;
+    cin.ignore();
+    while(t--){
+        string str;
+        getline(cin,str);
+        int state[10]={0};
+        int ans[10]={0};
+        if(str==" "){
+            for(int i=0;i<10;i++){
+            cout<<ans[i]<<" ";
+        }
+        }
+        else{
+        for(int i=0;i<str.size();i++){
+            for(int j=0;j<10;j++){
+                if(m[mp[str[i]]][j]==1&&state[j]==0){
+                    state[j]=1;
+                    ans[j]++;
+                }
+                else if(m[mp[str[i]]][j]==1!=1){
+                    state[j]=0;
+                }
+            }
+
+
+        }
+        for(int i=0;i<10;i++){
+            cout<<ans[i]<<" ";
+        }
+        cout<<endl;
+
+        }
+    }
+   return 0;
+ }
+
+

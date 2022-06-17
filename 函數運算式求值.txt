@@ -1,0 +1,100 @@
+#include <iostream>
+#include<stack>
+#include<string>
+#include<sstream>
+using namespace std;
+int main()
+{
+    string s,str;
+    stringstream ss;
+    while(getline(cin,s)){
+        ss.str("");
+        ss.clear();
+        stack<int>num;
+        stack<string>st;
+        ss<<s;
+        while(ss>>str){
+            st.push(str);
+        }
+        while(!st.empty()){
+            string temp=st.top();
+            st.pop();
+            if(temp=="f"){
+                int x=num.top();
+                num.pop();
+                num.push(2*x-3);
+
+            }
+            else if(temp=="g"){
+                int x=num.top();num.pop();
+                int y=num.top();num.pop();
+                //cout<<x<<y;
+                num.push(2*x+y-7);
+
+            }
+            else if(temp=="h"){
+                int x=num.top();num.pop();
+                int y=num.top();num.pop();
+                int z=num.top();num.pop();
+                num.push(3*x-2*y+z);
+
+            }
+            else{
+                int n=stoi(temp);
+                num.push(n);
+            }
+
+        }
+        cout<<num.top()<<endl;
+
+
+
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include<string>
+using namespace std;
+int fuc(int n){
+    string str;
+    cin>>str;
+    if(str=="f"){
+        int x=fuc(1);
+        return 2*x-3;
+    }
+    else if(str=="g"){
+        int x=fuc(1);
+        int y=fuc(1);
+        return 2*x+y-7;
+    }
+    else if(str=="h"){
+        int x=fuc(1);
+        int y=fuc(1);
+        int z=fuc(1);
+        return 3*x-2*y+z;
+    }
+    else{
+        return stoi(str);
+    }
+
+}
+int main(){
+    cout<<fuc(1)<<endl;
+    return 0;
+}

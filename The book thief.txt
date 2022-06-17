@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int s, ans1,ans2;
+    while (cin >> s) {
+        if (s == 0)break;
+        int temp = s;
+        for (int i = 1; i <= s+1; i++) {
+            temp -= i;
+            if (temp < 0) {
+                cout << 0 - temp << " " << i << endl;
+                break;
+            }
+        }
+
+    }
+        
+    return 0;
+}

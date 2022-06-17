@@ -1,0 +1,26 @@
+#include <iostream>
+#include <math.h>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    int S, N, i;
+    double p, q;
+    cin >> S;
+    while (S--) {
+        cin >> N >> p >> i;
+        if (p == 0) {
+            cout << "0.0000" << endl;
+            continue;
+        }
+        q = 1 - p;
+        cout << fixed << setprecision(4) << (pow(q, i - 1) * p) / (1 - pow(q, N)) << endl;
+
+
+    }
+
+
+    return 0;
+}

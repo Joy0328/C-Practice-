@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+
+    int n,test1,test2,i;
+    cin >> n;
+    i = 1;
+    while (i <= n) 
+    {
+        cin >> test1 >> test2;
+        cout << test1 + test2 << endl;
+        i++;
+    }
+    
+    return 0;
+}

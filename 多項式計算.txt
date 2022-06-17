@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int a, b, c, x;
+    while (cin >>a>>b>>c>>x)
+    {
+        cout << "ans=" << a * x*x + b * x + c << endl;
+    }
+
+  
+    return 0;
+}

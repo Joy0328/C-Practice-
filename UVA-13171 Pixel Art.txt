@@ -1,0 +1,66 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+using namespace std;
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        bool CK = true;
+        int sum[3];
+        string str;
+        cin >> sum[0] >> sum[1] >> sum[2] >> str;
+        for (int i = 0; i < str.size(); i++) {
+            switch (str[i])
+            {
+            case 'M':
+                sum[0]--;
+                break;
+            case 'C':
+                sum[2]--;
+                break;
+            case 'Y':
+                sum[1]--;
+                break;
+            case 'R':
+                sum[0]--;
+                sum[1]--;
+                break;
+
+            case 'B':
+                sum[0]--;
+                sum[1]--;
+                sum[2]--;
+                break;
+            case 'V':
+                sum[0]--;
+                sum[2]--;
+                break;
+            case 'G':
+                sum[1]--;
+                sum[2]--;
+                break;
+            case 'W':
+                break;
+            }
+            if (sum[0] < 0 || sum[1] < 0 || sum[2] < 0)
+            {
+                CK = !CK;
+                break;
+            }
+        }
+
+
+        if (CK) {
+            cout << "YES" << " " << sum[0] << " " << sum[1] << " " << sum[2] << "\n";
+        }
+        else
+        {
+            cout << "NO" << "\n";
+        }
+    }
+
+   
+    return 0;
+}

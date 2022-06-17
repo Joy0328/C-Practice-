@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int money, min, k;
+	int price[2] = { 32,55 };
+	while (cin >> money >> min >> k) {
+		int count = 0;
+		if (money >= price[k]) {
+			while (money >= price[k]) {
+				cout << count << ": Wayne ";
+				if (k == 0) {
+					money -= 32;
+					cout << "eats an Apple pie";
+					k = 1;
+				}
+				else if (k == 1)
+				{
+					money -= 55;
+					cout << "drinks a Corn soup";
+					k = 0;
+				}
+				if (money != 0) {
+					cout << ", and now he has " << money;
+					if (money > 1)
+						cout << " dollars.";
+					else
+						cout << " dollar.";
+				}
+				else
+					cout << ", and now he doesn't have money.";
+				count += min;
+				cout << endl;
+			}
+		}
+		else
+		{
+			cout << "Wayne can't eat and drink." << endl;
+		}
+		
+	}
+	return 0;
+}

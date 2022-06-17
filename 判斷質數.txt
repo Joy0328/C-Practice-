@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+
+    int n,i,total;
+   
+    while (cin >> n) 
+    { 
+        i = 1;
+        total = 0;
+        if (n == 1 or n == 0)
+        {
+            cout << "no" << endl;
+        }
+        else {
+            while (n >= i)
+            {
+                if (n % i == 0) {
+
+                    total = total + 1;
+
+                    if (total > 2) {
+                        cout << "no" << endl;
+                        break;
+                    }
+
+                }
+                i = i + 1;
+
+            }
+            if (total == 2)
+            {
+                cout << "yes" << endl;
+            }
+        }
+    }
+    return 0;
+}

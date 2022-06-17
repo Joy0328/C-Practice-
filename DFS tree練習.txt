@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+int tree[10];
+int dis;
+int n;
+void DFS(int num) {
+    if (tree[num] == -1) {
+        cout << dis;
+    }
+    else
+    {
+        dis++;
+        DFS(tree[num]);
+    }
+}
+int main(){
+   
+    while (cin >> n) {       
+        for (int i = 0; i < n; i++) {
+            cin >> tree[i];
+        }
+        for (int i = 0; i < n; i++) {
+            bool ck = true;
+            for (int j = 0; j < n; j++) {
+                if (i == tree[j]) {
+                    ck = false;
+                }
+            }
+            if (ck) {
+                cout << "葉節點[" << i << "]與根節點距離差";
+                dis = 0;
+                DFS(i);
+                cout << endl;
+
+            }
+        }
+    }
+    return 0;
+}

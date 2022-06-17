@@ -1,0 +1,35 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+int main() {
+	int n, count = 1;
+	while (cin >> n) {
+		int j = 0, q[1000], sum[10000];
+		for (int i = 0; i < n; i++) {
+			cin >> q[i];
+		}
+		for (int i = 0; i < n; i++) {
+			for (int k = i; k < n; k++) {
+				sum[j] = q[i] + q[k];
+				j++;
+			}
+		}
+		sort(sum, sum+j);
+		for (int i = 0; i < j-1; i++) {
+			if (sum[i] == sum[i + 1]) {
+				j = 0;
+				break;
+			}
+		}
+		cout << "Case #" << count;
+		if (j) {
+			cout << ": It is a B2-Sequence.";
+		}
+		else {
+			cout << ": It is not a B2-Sequence.";
+		}
+		cout << endl << endl;
+		count++;
+	}
+	return 0;
+}

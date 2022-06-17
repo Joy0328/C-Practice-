@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int base, a;
+    cin >> base;
+    while (cin>>a) {
+        if (a == 0)break;
+        if (a % base == 0)
+            cout << a / base << endl;
+        else
+            cout << base - a % base << endl;
+        
+       
+    }
+
+    return 0;
+}

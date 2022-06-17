@@ -1,0 +1,31 @@
+#include <iostream>
+#include<map>
+
+using namespace std;
+int main() {
+    string str;
+    map<char, int>mp;
+    string S[] = { "BFPV","CGJKQSXZ","DT","L","MN","R" };
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; S[i][j] != '\0'; j++) {
+            mp[S[i][j]] = i + 1;
+        }
+    }
+    while (cin >> str) {
+        int c = 0;
+        for (int i = 0; i < str.size(); i++) {
+            if (mp.count(str[i])) {
+                if (c != mp[str[i]]) {
+                    cout << mp[str[i]];
+                    c = mp[str[i]];
+                }
+            }
+            else
+            {
+                c = 0;
+            }
+        }       
+        cout << endl;
+    }
+    return 0;
+}

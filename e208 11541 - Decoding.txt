@@ -1,0 +1,47 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+using namespace std;
+int main() {
+    int T, k = 1;
+    cin >> T;
+    while (T--) {
+        string str;
+        cin >> str;     
+        char temp2;
+        vector<char>eng;
+        for (int i = 0; i < str.size(); i++) {
+            if (str[i] >= 'A' && str[i] <= 'Z')
+            {   
+                int temp = 0;
+                temp2 = str[i];
+                i++;
+                while (str[i] >= '0' && str[i] <= '9')
+                {   
+                    temp *= 10;                  
+                    temp += str[i] - '0';
+                    i++;
+                }
+                i--;
+                for (int j = 0; j < temp; j++) {
+                    eng.push_back(temp2);
+
+                }
+            }
+
+        }
+        cout << "Case " << k++ << ": ";
+        for (int i = 0; i < eng.size(); i++) {
+            cout << eng[i];
+        }
+        cout << endl;
+
+    }
+
+
+
+
+
+    return 0;
+}

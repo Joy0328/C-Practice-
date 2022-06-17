@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+void hanoi(char from, char via, char to, int disc) {
+	if (disc == 1)
+		cout << "From" << from << "to" << to << endl;
+	else
+	{
+		hanoi(from, to, via, disc - 1);
+		cout << "From" << from << "to" << to << endl;
+		hanoi(via, from, to, disc - 1);
+	}
+
+}
+
+
+int main() {
+	int disc = 0;
+	cin >> disc;
+	char a = 'A', b = 'B', c = 'C';
+	hanoi(a, b, c, disc);
+
+
+
+	return 0;
+}

@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+class rectangle {
+	public:
+		double x1, y1, x2, y2;
+	};
+int main() {
+	char c;
+	rectangle re[10];
+	int i = 0;
+	while (cin >> c) {
+		if (c == '*')break;
+		double x1, y1, x2, y2;
+		cin >> x1 >> y1 >> x2 >> y2;
+		re[i] = { x1, y1, x2, y2 };
+		i++;
+	}
+	double x, y;
+	int PointNunber = 1;
+	while (cin >> x >> y) {
+		if (x == y && x == 9999.9)break;
+		bool check = true;
+		
+		for (int j = 0; j < i; j++) {
+			if (x > re[j].x1 && y < re[j].y1 && x < re[j].x2 && y > re[j].y2) {
+				cout << "Point " << PointNunber << " is contained in figure " << j + 1 << endl;
+				check = false;
+				
+			}
+		}
+		if (check) {
+			cout << "Point " << PointNunber << " is not contained in any figure";
+			if (PointNunber != 985)
+				cout << " ";
+			cout << endl;
+		}
+		
+
+
+		PointNunber++;
+	}
+	
+	return 0;
+}

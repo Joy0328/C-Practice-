@@ -1,0 +1,35 @@
+#include <iostream>
+#include<set>
+using namespace std;
+int main() {
+    int T, k = 1;
+    cin >> T;
+    while (T--) {
+        long long int n;
+        cin >> n;
+        cout << "Case #" << k << ": " << n;
+        k++;
+        set<long long int>st;
+        st.insert(n);
+        bool flag = true;
+        while (n!=1) {           
+            long long int temp = 0;
+            while (n > 0) {
+                temp += (n % 10) * (n % 10);
+                n /= 10;
+            }
+            n = temp;            
+            if (st.count(n))
+            {
+                flag = !flag;
+                break;
+            }
+            st.insert(n);
+        }
+        if (flag)
+            cout << " is a Happy number." << endl;
+        else
+            cout << " is an Unhappy number." << endl;
+    }
+    return 0;
+}
