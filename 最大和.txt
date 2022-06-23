@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int n, m;
+	while (cin >> n >> m) {
+		int num[25][25];
+		int a[25];
+		int sum = 0;
+		for (int i = 0; i < n; i++) {
+			int max = 0;
+			for (int j = 0; j < m; j++) {
+				cin >> num[i][j];
+				if (max < num[i][j]) {
+					max = num[i][j];
+				}
+
+			}
+			a[i] = max;
+			sum += max;
+		}
+		cout << sum << endl;
+		int ans2[25] = { -1 };
+		int j = 0;
+		for (int i = 0; i < n; i++) {
+			if (sum % a[i] == 0) {
+				ans2[j] = a[i];
+				j++;
+			}
+		}
+		if (ans2[0] != -1) {
+			for (int i = 0; i < j; i++) {
+				cout << ans2[i];
+				if (i != j - 1)
+					cout << " ";
+			}
+		}
+		else {
+			cout << ans2[0];
+		}
+		cout << endl;
+
+
+	}
+
+
+
+		
+	return 0;
+}

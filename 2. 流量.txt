@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+int main()
+{   
+    int n, m, k;
+    while (cin >> n >> m >> k) {
+        int ser_city[55][55], mn = 100000000;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                cin >> ser_city[i][j];
+            }
+        }
+        while (k--) {
+            int cost = 0;
+            int flow[55][55] = { 0 };
+            for (int i = 0; i < n; i++) {
+                int a;
+                cin >> a;
+                for (int j = 0; j < m; j++) {
+                    flow[a][j] += ser_city[i][j];
+                }
+            }
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < m; j++) {
+                    if (i == j) {
+                        cost += flow[i][j];
+                    }
+                    else
+                    {
+                        if (flow[i][j] <= 1000) {
+                            cost += flow[i][j] * 3;
+                        }
+                        else
+                        {
+                            cost += (flow[i][j] - 1000) * 2 + 3000;
+                        }
+                    }
+                }
+            }
+            mn = min(mn, cost);
+        }
+        cout << mn << endl;
+    }    
+    return 0;
+
+}

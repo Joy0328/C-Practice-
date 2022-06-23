@@ -1,0 +1,70 @@
+#include<iostream>
+#include<vector>
+#include<math.h>
+using namespace std;
+int main() {
+	int ac, ar, bc, br, r;
+	while (cin >> ac >> ar >> bc >> br >> r) {
+		int a[105][105], b[105][105], sum[10000], count = 0, asum = 0;
+		for (int i = 0; i < ac; i++) {
+			for (int j = 0; j < ar; j++) {
+				cin >> a[i][j];
+				asum += a[i][j];
+			}
+		}// INPUT A & A SUM
+		for (int i = 0; i < bc; i++) {
+			for (int j = 0; j < br; j++) {
+				cin >> b[i][j];
+			}
+		}// INPUT B
+
+		vector<int>vec;// 暫存子集
+
+		for (int i = 0; i < bc + 1 - ac; i++) {
+			for (int j = 0; j < br + 1 - ar; j++) {
+				int Actemp = 0, Artemp = 0;
+				int dis = r;// 距離
+				for (int k = i; k < i + ac; k++) {
+					for (int z = j; z < j + ar; z++) {
+						vec.push_back(b[k][z]);
+						if (a[Actemp][Artemp] != b[k][z])
+						{
+							dis--;
+						}
+						Artemp++;
+					}
+					Actemp++;
+					Artemp = 0;
+					if (dis < 0) {
+						break;
+					}
+
+				}
+				if (dis >= 0) {
+					int temp = 0;
+					for (int s = 0; s < vec.size(); s++) {
+						temp += vec[s];
+					}
+					sum[count] = temp;
+					count++;
+				}
+				vec.clear();
+			}
+
+		}
+		int min = 888888;
+		for (int i = 0; i < count; i++) {
+			if (min > abs(sum[i] - asum)) {
+				min = abs(sum[i] - asum);
+			}
+		}
+		cout << count << endl;
+		if (count != 0)
+			cout << min;
+		else
+			cout << "-1";
+		cout << endl;
+
+	}
+	return 0;
+}

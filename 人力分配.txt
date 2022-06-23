@@ -1,0 +1,24 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int main() {
+	int A, B, C, a, b, c, n;
+	while (cin >> A >> B >> C >> a >> b >> c >> n) {
+		int X, x, max = -999999999;
+		for (int i = 0; i <= n; i++) {
+			X = i;
+			x = n - i;
+			int sum = 0;
+			sum = (A * X * X + B * X + C )+( a * x * x + b * x + c);
+			if (max < sum)
+				max = sum;
+			
+		}
+		cout << max << endl;
+
+
+	}
+
+
+	return 0;
+}

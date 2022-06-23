@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int n, D;
+	while (cin >> n >> D) {
+		int num[105];
+		int p = 0;
+		for (int i = 0; i < n; i++) {
+			cin >> num[i];
+		}
+		int temp = num[0];
+		for (int i = 1; i < n; i++) {
+			if (temp < 0 && (-temp) - D >= num[i]) {
+				temp = num[i];
+
+			}
+			else if (temp + D <= num[i] && temp > 0) {
+				p += num[i] - temp;
+				temp = -num[i];
+			}
+			
+		}
+		cout << p << endl;
+
+	}
+
+	
+	return 0;
+}

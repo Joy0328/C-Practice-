@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int a[4], b[4];
+	int at = 0, bt = 0;
+	for (int j = 0; j < 2; j++) {
+		int asum = 0, bsum = 0;
+		for (int i = 0; i < 4; i++) {
+			cin >> a[i];
+			asum += a[i];
+		}
+		for (int i = 0; i < 4; i++) {
+			cin >> b[i];
+			bsum += b[i];
+		}
+		cout << asum << ":" << bsum << endl;
+		if (asum > bsum)at++;
+		else if (asum < bsum)bt++;
+	}
+	if (at == bt) {
+		cout << "Tie";
+	}
+	else if (at == 2) {
+		cout << "Win";
+	}
+	else
+	{
+		cout << "Lose";
+	}
+	cout << endl;
+	return 0;
+}

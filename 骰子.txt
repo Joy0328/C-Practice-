@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int n, m;
+	while (cin >> n >> m) {
+		int cube[25][3];
+		for (int i = 1; i <= n; i++) {
+			cube[i][0] = 1;
+			cube[i][1] = 4;
+			cube[i][2] = 2;
+		}//inin
+		while (m--) {
+			int a, b;
+			cin >> a >> b;
+			if (a > 0 && b > 0) {
+				for (int i = 0; i < 3; i++) {
+					int temp = cube[a][i];
+					cube[a][i] = cube[b][i];
+					cube[b][i] = temp;
+				}
+			}//change
+			else {
+				int temp = cube[a][0];
+				cube[a][0] = 7 - cube[a][-b];
+				cube[a][-b] = temp;
+			}
+		}
+		for (int i = 1; i <= n; i++) {
+			cout << cube[i][0] << " ";
+		}
+		cout << endl;
+
+
+	}
+	return 0;
+}

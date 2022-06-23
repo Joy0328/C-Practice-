@@ -1,0 +1,24 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main() {
+	string str;
+	while (cin >> str) {
+		bool c = true;
+		long long int odd = 0, even = 0;
+		for (int i = str.size() - 1; i >= 0; i--) {
+			if (c) {
+				odd = odd + str[i] - '0';
+				c = !c;
+			}
+			else {
+				even = even + str[i] - '0';
+				c = !c;
+			}
+		}
+		cout << abs(even - odd) << endl;
+	}
+
+		
+	return 0;
+}

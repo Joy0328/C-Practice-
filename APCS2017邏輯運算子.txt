@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+int d;
+void AND(int a, int b, int c) {
+	if ((c != 0 && a != 0 && b != 0) || (c == 0 && (a == 0 || b == 0))) {
+		cout << "AND" << endl;
+		d = 1;
+	}
+}
+void OR(int a, int b, int c) {
+	if ((c == 0 && a == 0 && b == 0)|| (c != 0 && (a > 0 || b > 0))) {
+		cout << "OR" << endl;
+		d = 1;
+	}
+}
+void XOR(int a, int b, int c) {
+	if ((c == 0 && a == b) || (c != 0 && a != b)) {
+		cout << "XOR" << endl;
+		d = 1;
+	}
+}
+int main() {
+	int a, b, c;
+	while (cin >> a >> b >> c) {
+		d = 0;
+		AND(a, b, c);
+		OR(a, b, c);
+		XOR(a, b, c);
+		if (d==0)
+			cout << "IMPOSSIBLE" << endl;		
+	}
+	return 0;
+}

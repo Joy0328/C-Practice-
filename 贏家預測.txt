@@ -1,0 +1,67 @@
+#include<iostream>
+#include <queue>
+#include <map>
+using namespace std;
+int main() {
+	int n, m;
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	while (cin >> n >> m) {
+		queue<int>NUM;
+		queue<int>LOSS;
+		queue<int>WIN;
+		map<int, int>mp;
+		long long int S[1005];
+		long long int T[1005];
+		long long int temp;
+		for (int i = 1; i <= n; i++) {
+			cin >> S[i];
+		} //戰力
+		for (int i = 1; i <= n; i++) {
+			cin >> T[i];
+		} //應變力
+		for (int i = 1; i <= n; i++) {
+			cin >> temp;
+			NUM.push(temp);
+		} //比賽編號
+		while (1)
+		{
+			if (NUM.size() == 1) {
+				WIN.push(NUM.front());
+				NUM.pop();
+			}
+			if(NUM.empty()){
+				while (!WIN.empty()) {
+					NUM.push(WIN.front());
+					WIN.pop();
+				}
+				while (!LOSS.empty()) {
+					if (mp[LOSS.front()] < m) {
+						NUM.push(LOSS.front());
+					}
+					LOSS.pop();
+				}
+				if (NUM.size() == 1) {
+					cout << NUM.front() << endl;
+					break;
+				}
+			}
+			int a = NUM.front(); NUM.pop();
+			int b = NUM.front(); NUM.pop();
+			if (S[a]*T[a]<S[b]*T[b])
+			{
+				int t = a;
+				a = b;
+				b = t;		
+			}	
+			temp = S[a];
+			S[a] = S[a] + S[b] * T[b] / (2 * T[a]);
+			T[a] = T[a] + S[b] * T[b] / (2 * temp);
+			WIN.push(a);
+			S[b] = S[b] + S[b] / 2;
+			T[b] = T[b] + T[b] / 2;
+			mp[b]++; LOSS.push(b);
+		}
+	}
+	return 0;
+}

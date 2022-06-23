@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+int main() {
+    int n, m, k, x, y, tmp;
+    while (cin >> n >> m >> k) {
+        int spot[505][5] = { 0 }, mp[105][105] = { 0 }, sum = 0;
+        for (int i = 0; i < k; i++) {
+            spot[i][0] = 1;
+            for (int j = 1; j < 5; j++) {
+                cin >> tmp;
+                spot[i][j] = tmp;
+            }
+        }
+        tmp = k;
+        while (tmp > 0) {
+            for (int i = 0; i < k; i++) {
+                if (spot[i][0] == 1) {
+                    mp[spot[i][1]][spot[i][2]] = 1;//放炸彈
+                }
+            }
+            for (int i = 0; i < k; i++) {
+                if (spot[i][0] == 1) {
+                    x = spot[i][1] + spot[i][3];
+                    y = spot[i][2] + spot[i][4];
+                    spot[i][1] = x;
+                    spot[i][2] = y;
+                    if (x < 0 || x >= n || y < 0 || y >= m) {
+                        spot[i][0] = 0;//dead
+                        tmp--;
+                    }
+                    else if (mp[x][y] != 0) {
+                        spot[i][0] = 3;
+                        tmp--;
+                    }
+
+                }
+            }
+            for (int i = 0; i < k; i++) {
+                if (spot[i][0] == 3) {
+                    mp[spot[i][1]][spot[i][2]] = 0;//炸彈爆掉
+                    spot[i][0] = 0;
+                }
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (mp[i][j] != 0)
+                    sum++;
+            }
+        }
+        cout << sum << endl;
+
+
+    }
+
+
+    return 0;
+}

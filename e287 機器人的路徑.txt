@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+int dx[]={0,0,1,-1};
+int dy[]={1,-1,0,0};
+int main(){
+    int n,m;
+    while(cin>>n>>m){
+        int mp[105][105],spot[105][105]={0},mn=1000001,sx,sy,sum=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                cin>>mp[i][j];
+                if(mn>mp[i][j]){
+                    sx=i;
+                    sy=j;
+                    mn=mp[i][j];
+                }
+            }
+        }
+        sum+=mp[sx][sy];
+        spot[sx][sy]=1;
+        while(1){
+            mn=1000001;
+            int temp_x,temp_y;
+            bool ed=true;
+            for(int i=0;i<4;i++){
+                int x=sx+dx[i];
+                int y=sy+dy[i];
+                if(x>=0&&x<n&&y>=0&&y<m&&mn>mp[x][y]&&spot[x][y]==0){
+                    temp_x=x;
+                    temp_y=y;
+                    mn=mp[temp_x][temp_y];
+                    ed=false;
+                }
+            }
+            if(ed)break;
+            sum+=mp[temp_x][temp_y];
+            sx=temp_x;
+            sy=temp_y;
+            spot[sx][sy]=1;
+        }
+        cout<<sum<<endl;
+    }
+    return 0;
+}

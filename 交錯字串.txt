@@ -1,0 +1,60 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int main() {
+	int k;
+	while (cin >> k) {
+		string str;
+		cin >> str;
+		int Cnt = 0, max = 0, sum;
+		for (int i = 0; i < str.size(); i++) {
+			if (str[i] >= 'a' && str[i] <= 'z') {
+				str[i] = '0';
+			}
+			else {
+				str[i] = '1';
+			}
+		}
+		vector<char>vec;
+		for (int i = 0; i < str.size(); i++) {
+			vec.clear();
+			vec.push_back(str[i]);
+			int Cnt = k - 1;
+			sum = vec.size();
+			for (int j = i + 1; j < str.size(); j++) {
+				if (Cnt > 0) {
+					if (str[j] == vec.back())
+					{
+						vec.push_back(str[j]);
+						Cnt--;
+					}
+					else
+					{
+						Cnt--;
+						sum -=  (k - Cnt - 1);
+						if (max < sum)
+							max = sum;
+						break;
+					}
+				}
+				else if (Cnt == 0) {
+					if (str[j] == vec.back()) {
+						if (max < sum)
+							max = sum;
+						break;
+					}
+					else
+					{
+						vec.push_back(str[j]);
+						Cnt = k - 1;
+					}
+				}
+				sum = vec.size();
+			}
+			if (max < sum&&Cnt==0)
+				max = sum;
+		}
+		cout << max << endl;
+	}
+	return 0;
+}

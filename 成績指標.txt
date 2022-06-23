@@ -1,0 +1,37 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main() {
+	int n;
+	while (cin >> n) {
+		int num[25];
+		for (int i = 0; i < n; i++) {
+			cin >> num[i];
+		}
+		sort(num, num + n);
+		int a = -1, b = -1;
+		for (int i = 0; i < n; i++) {
+			if (num[i] < 60) {
+				a = num[i];
+			}
+			if (num[i] >=60) {
+				b = num[i];
+				break;
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			cout << num[i] << " ";
+		}
+		cout << endl;
+		if (a == -1)
+			cout << "best case" << endl;
+		else
+			cout << a << endl;
+		if (b == -1)
+			cout << "worst case" << endl;
+		else
+			cout << b << endl;
+
+	}
+	return 0;
+}
