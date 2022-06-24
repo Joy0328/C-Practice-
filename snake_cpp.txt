@@ -1,4 +1,4 @@
-//練習參考 https://www.796t.com/content/1549648095.html 並修改了一些設定
+//練習參考 https://www.796t.com/article.php?id=163978 並修改了一些設定
 #include<iostream>
 #include<windows.h>
 #include<deque>
