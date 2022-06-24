@@ -1,6 +1,4 @@
 //練習參考 https://www.796t.com/content/1549648095.html 並修改了一些設定
-
-
 #include<iostream>
 #include<windows.h>
 #include<deque>
@@ -13,7 +11,14 @@ COORD pos;
 bool win = false;
 int score;
 int level;
-void gotoxy(short x, short y) {
+void SetColor(int f = 7, int b = 0)//設置顏色
+{
+	unsigned short ForeColor = f + 16 * b;
+	HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hCon, ForeColor);
+}
+void gotoxy(short x, short y) //更改游標位置
+{
 	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	pos = { x,y };
 	SetConsoleCursorPosition(hOut, pos);
@@ -38,13 +43,13 @@ private:
 	char image;
 	enum mapSize { width = 60, height = 30 };
 	deque<Snake>snake;
-	
+
 	char hit = 'w';
 	bool eat_Food = false;
 	short food_x, food_y;
 	int speed = 300;
 	bool snake_state = true;
-	
+
 public:
 	Game();
 	void draw_Frame() //畫邊框
@@ -55,7 +60,7 @@ public:
 			gotoxy(width, i);
 			cout << "●";
 		}
-		for (int i = 0; i <= width; i+=2) {
+		for (int i = 0; i <= width; i += 2) {
 			gotoxy(i, 0);
 			cout << "●";
 			gotoxy(i, height);
@@ -142,7 +147,7 @@ public:
 		}
 		else if (hit == 'd' || hit == 'D')
 		{
-			hit = 'd'; 
+			hit = 'd';
 			snake[0].position_x++;
 		}
 		else if (hit == 'w' || hit == 'W')
@@ -163,7 +168,7 @@ public:
 		cout << "score:" << score;
 		gotoxy(65, 6);
 		cout << "Level:" << level;
-		
+
 	}
 };
 Game::Game() {
@@ -209,7 +214,7 @@ Game::Game() {
 int main()
 {
 	system("mode con cols=100 lines=40");
-	system("color 76");
+	
 	system("title snake");
 	gotoxy(26, 15);
 	cout << "遊戲玩法:" << endl;
@@ -218,7 +223,7 @@ int main()
 	gotoxy(26, 17);
 	cout << "2.@為蛇的頭部，o為身體。";
 	gotoxy(26, 18);
-	cout << "3.'9'為小老鼠，吃掉一隻加一分，每吃3隻難度就會提升。";
+	cout << "3.'9'為小老鼠，吃掉一隻加一分，每吃3隻等級就會提升。";
 	gotoxy(26, 19);
 	cout << "4.撞到邊界、身體遊戲失敗或是等級到達Level 5則遊戲獲勝。";
 	gotoxy(26, 20);
@@ -227,12 +232,14 @@ int main()
 	cout << "ESC:離開遊戲。";
 	while (1) {
 		if (_getch() == 13) {
+			SetColor(6, 0);
 			int start = time(0);
 			score = 0;
 			level = 1;
 			system("cls");
 			Game game;
 			system("cls");
+			SetColor();
 			if (win == true)
 				cout << "YOU WIN!!!" << endl;
 			else
@@ -244,7 +251,7 @@ int main()
 			else
 			{
 				cout << end / 60 << "分";
-				if(end%60!=0){
+				if (end % 60 != 0) {
 					cout << end % 60 << "秒";
 				}
 			}
