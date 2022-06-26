@@ -1,9 +1,15 @@
-//練習參考 https://www.796t.com/article.php?id=163978 並修改了一些設定
+/*練習參考 https://www.796t.com/content/1549648095.html 並修改一些設定
+音樂製作:朱嘉偉(非本人) 音樂下載:https://drive.google.com/file/d/1lNvvjQwOBHQOROT7h2h5L03EP1MzwHXF/view?fbclid=IwAR3ikMualYEE48Qxb4aZthLC_zcz6Jaorl-w9C89DZWiy2RK5Rz7tLtVq7k
+備用載點:https://drive.google.com/file/d/1_txABIP9Uf_ov74yoerI1uYOSFYdCY_Y/view?usp=sharing */
+
 #include<iostream>
 #include<windows.h>
 #include<deque>
+#include<stdio.h>
 #include <conio.h>
 #include <ctime>
+#include <mmsystem.h>
+#pragma comment(lib,"winmm.lib")
 using namespace std;
 HANDLE hOut;
 COORD pos;
@@ -11,7 +17,7 @@ COORD pos;
 bool win = false;
 int score;
 int level;
-void SetColor(int f = 7, int b = 0)//設置顏色
+void SetColor(int f = 7, int b = 0)
 {
 	unsigned short ForeColor = f + 16 * b;
 	HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -178,6 +184,7 @@ Game::Game() {
 	draw_Food();
 	Snake tail;
 	while (1) {
+		mciSendString("play Hypers.mp3 repeat", 0, 0, 0);//撥放音樂
 		draw_Frame();
 		tail = snake.back();
 		if (eat_Food) {
@@ -213,9 +220,9 @@ Game::Game() {
 }
 int main()
 {
-	system("mode con cols=100 lines=40");
-	
+	system("mode con cols=100 lines=40");	
 	system("title snake");
+	mciSendString("open Hypers.mp3", 0, 0, 0);	
 	gotoxy(26, 15);
 	cout << "遊戲玩法:" << endl;
 	gotoxy(26, 16);
@@ -230,8 +237,10 @@ int main()
 	cout << "ENTER:開始遊戲";
 	gotoxy(26, 21);
 	cout << "ESC:離開遊戲。";
+	
 	while (1) {
 		if (_getch() == 13) {
+			
 			SetColor(6, 0);
 			int start = time(0);
 			score = 0;
@@ -240,10 +249,15 @@ int main()
 			Game game;
 			system("cls");
 			SetColor();
-			if (win == true)
+			if (win == true) {
 				cout << "YOU WIN!!!" << endl;
-			else
+			}
+			else {
+				
 				cout << "YOU LOSS" << endl << "score:" << score << endl << "level:" << level << endl;
+				
+				
+			}
 			cout << "遊戲時間:";
 			int end = time(0) - start;
 			if (end < 60)
