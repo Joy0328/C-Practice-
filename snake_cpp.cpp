@@ -1,6 +1,7 @@
 /*練習參考 https://www.796t.com/content/1549648095.html 並修改一些設定
-音樂製作:朱嘉偉(非本人) 音樂下載:https://drive.google.com/file/d/1lNvvjQwOBHQOROT7h2h5L03EP1MzwHXF/view?fbclid=IwAR3ikMualYEE48Qxb4aZthLC_zcz6Jaorl-w9C89DZWiy2RK5Rz7tLtVq7k
-備用載點:https://drive.google.com/file/d/1_txABIP9Uf_ov74yoerI1uYOSFYdCY_Y/view?usp=sharing */
+音樂製作:朱嘉偉(朋友製作非本人) 音樂下載:https://drive.google.com/file/d/1lNvvjQwOBHQOROT7h2h5L03EP1MzwHXF/view?fbclid=IwAR3ikMualYEE48Qxb4aZthLC_zcz6Jaorl-w9C89DZWiy2RK5Rz7tLtVq7k
+備用音樂載點:https://drive.google.com/file/d/1_txABIP9Uf_ov74yoerI1uYOSFYdCY_Y/view?usp=sharing 
+遊戲試玩影片https://www.youtube.com/watch?v=oPNyFmXvkZA*/
 
 #include<iostream>
 #include<windows.h>
